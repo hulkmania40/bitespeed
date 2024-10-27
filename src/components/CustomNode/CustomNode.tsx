@@ -1,8 +1,7 @@
-import React from "react";
 import { Handle, Position, NodeProps } from "reactflow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CustomNode.module.scss";
-import { faInfo, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
 
 const CustomNode = (props: NodeProps) => {
   return (

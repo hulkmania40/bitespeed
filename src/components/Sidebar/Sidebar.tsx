@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import { Fragment } from "react";
 import styles from "./Sidebar.module.scss";
 import { Input, Label } from "reactstrap";
 import NodesPanel from "../NodesPanel/NodesPanel";
