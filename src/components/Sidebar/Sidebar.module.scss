@@ -1,4 +1,4 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 .sidebar {
   position: fixed;
@@ -10,25 +10,21 @@
   padding: 20px;
   box-shadow: -2px 0 5px $color-sidebar-shadow;
   z-index: 1000;
-}
 
-.title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: $color-title;
-}
-
-.menu {
-  list-style-type: none;
-  padding: 0;
-
-  .menuItem {
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
+  &_icon {
     &:hover {
-      background-color: $color-hover;
+      cursor: pointer;
     }
+  }
+
+  &_title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: $color-title;
+  }
+
+  &_menu {
+    list-style-type: none;
+    padding: 0;
   }
 }
