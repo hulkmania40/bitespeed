@@ -4,11 +4,19 @@ $color-primary-dark: #357abd;
 $color-primary-darker: #2c5e92;
 
 // Neutral Colors
-$color-background: #f7f9fc;
-$color-white: #ffffff;
-$color-text: #333333;
+$color-background: #f8f9fa;
+$color-sidebar-shadow: rgba(0, 0, 0, 0.1);
+$color-title: #333333;
+$color-hover: #e2e6ea;$color-text: #333333;
 
 // Shadows
 $shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
 $shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.15);
 $shadow-active: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+// Utility Colors
+$color-white: #ffffff;
+$color-gray-light: #f1f3f5;
+$color-gray-dark: #495057;
+$color-primary: #4a90e2;
+$color-primary-dark: #357abd;
