@@ -1,5 +1,6 @@
 // Primary Colors
 $color-primary: #4a90e2;
+$color-primary-light: #97b1cf;
 $color-primary-dark: #357abd;
 $color-primary-darker: #2c5e92;
 
@@ -7,7 +8,8 @@ $color-primary-darker: #2c5e92;
 $color-background: #f8f9fa;
 $color-sidebar-shadow: rgba(0, 0, 0, 0.1);
 $color-title: #333333;
-$color-hover: #e2e6ea;$color-text: #333333;
+$color-hover: #e2e6ea;
+$color-text: #333333;
 
 // Shadows
 $shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -18,9 +20,19 @@ $shadow-active: 0 2px 4px rgba(0, 0, 0, 0.2);
 $color-white: #ffffff;
 $color-gray-light: #f1f3f5;
 $color-gray-dark: #495057;
-$color-primary: #4a90e2;
-$color-primary-dark: #357abd;
 
 // Badge Colors
-$success-color: green;
-$danger-color: red;
+
+// Success (Green) Variants
+$success-color: #28a745;
+$success-light: #d4edda; // light green, for background highlights or lighter elements
+$success-light-border: #c3e6cb; // border color, slightly darker than $success-light
+$success-dark: #218838; // darker green, for hover states or strong emphasis
+$success-darker: #1e7e34; // even darker, for active or pressed states
+
+// Danger (Red) Variants
+$danger-color: #dc3545;
+$danger-light: #f8d7da; // light red, for background highlights or lighter elements
+$danger-light-border: #f5c6cb; // border color, slightly darker than $danger-light
+$danger-dark: #c82333; // darker red, for hover states or strong emphasis
+$danger-darker: #bd2130;

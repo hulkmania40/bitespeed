@@ -31,7 +31,7 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({
                 : styles.navbar_badge_danger
             )}
           >
-            {submitMessage ? "Success" : "Error"}
+            {submitMessage ? "Flow Saved Successfully" : "Cannot Save Flow"}
           </div>
         )}
       </Col>

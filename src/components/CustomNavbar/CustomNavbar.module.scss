@@ -16,4 +16,21 @@
   &_button {
     border-left: 2px solid $color-sidebar-shadow;
   }
+
+  &_badge {
+    padding: 5px;
+    border-radius: 4px;
+
+    &_success {
+      background-color: $success-light;
+      border: 1px solid $success-light-border;
+      color: $success-color;
+    }
+
+    &_danger {
+      background-color: $danger-light;
+      border: 1px solid $danger-light-border;
+      color: $danger-color;
+    }
+  }
 }

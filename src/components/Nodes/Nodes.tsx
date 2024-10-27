@@ -12,10 +12,25 @@ import ReactFlow, {
 
 import "reactflow/dist/style.css";
 import { SelectedNodeInterface } from "../../App";
+import CustomNode from "../CustomNode/CustomNode";
+
+const nodeTypes = {
+  customNode: CustomNode,
+};
 
 const initialNodes = [
-  { id: "1", position: { x: 0, y: 100 }, data: { label: "First" } },
-  { id: "2", position: { x: 0, y: 200 }, data: { label: "Second" } },
+  {
+    id: "1",
+    type: "customNode",
+    position: { x: 0, y: 100 },
+    data: { label: "First" },
+  },
+  {
+    id: "2",
+    type: "customNode",
+    position: { x: 200, y: 100 },
+    data: { label: "Second" },
+  },
 ];
 
 const initialEdges = [{ id: "reactflow__edge-1-2", source: "1", target: "2" }];
@@ -89,7 +104,7 @@ const Nodes = (props: NodesProps) => {
         id: `${nodes.length + 1}`,
         position,
         data: { label: `New Message` },
-        type: "default",
+        type: "customNode",
       };
 
       setNodes((nds) => nds.concat(newNode));
@@ -107,6 +122,7 @@ const Nodes = (props: NodesProps) => {
       onNodeClick={onNodeClick}
       onDragOver={onDragOver}
       onDrop={onDrop}
+      nodeTypes={nodeTypes}
     >
       <MiniMap position="bottom-left" />
       <Controls position="bottom-right" />
