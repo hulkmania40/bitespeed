@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bitespeed/static/css/main.5c7643cc.css",
+    "main.js": "/bitespeed/static/js/main.925cd1b5.js",
+    "static/js/453.36738d9c.chunk.js": "/bitespeed/static/js/453.36738d9c.chunk.js",
+    "index.html": "/bitespeed/index.html",
+    "main.5c7643cc.css.map": "/bitespeed/static/css/main.5c7643cc.css.map",
+    "main.925cd1b5.js.map": "/bitespeed/static/js/main.925cd1b5.js.map",
+    "453.36738d9c.chunk.js.map": "/bitespeed/static/js/453.36738d9c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5c7643cc.css",
+    "static/js/main.925cd1b5.js"
+  ]
+}
