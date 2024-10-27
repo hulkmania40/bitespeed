@@ -1,4 +1,4 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 .nodesPanel {
   display: flex;
@@ -12,8 +12,8 @@
 }
 
 .draggableNode {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: 120px;
   padding: 10px;
   margin: 10px 0;

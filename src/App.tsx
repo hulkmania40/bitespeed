@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import { Container } from "reactstrap";
 import "./App.css";
 import Nodes from "./components/Nodes/Nodes";
@@ -16,6 +16,13 @@ function App() {
   const [showNodesPanel, setShowNodesPanel] = useState<boolean>(true);
   const [edges, setEdges] = useState<Edge[]>([]);
   const [allNodes, setAllNodes] = useState<Node[]>([]);
+  const [submitMsg, setSubmitMsg] = useState<boolean | null>(null);
+
+  // Resets the onSubmit message wheneevr any side change happens
+  useEffect(() => {
+    setSubmitMsg(null)
+  }, [selectedNode,showNodesPanel,edges,allNodes])
+  
 
   // If all the nodes are either in the source/target of the edge then that node is connected, else it's not
   function areAllNodesConnected(nodes: Node[], edges: Edge[]): boolean {
@@ -31,19 +38,13 @@ function App() {
   }
 
   const handleSave = () => {
-    console.log(allNodes);
     const flag = areAllNodesConnected(allNodes, edges);
-
-    if (flag) {
-      alert("Saved Successfully");
-    } else {
-      alert("Error: Some nodes are not connected.");
-    }
+    setSubmitMsg(flag)
   };
 
   return (
     <Fragment>
-      <CustomNavbar onSave={handleSave} />
+      <CustomNavbar onSave={handleSave} submitMsg={submitMsg}/>
       <Container fluid className="flow_container">
         <Nodes
           selectedNode={(id: string, label: string) => {

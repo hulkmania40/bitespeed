@@ -1,7 +1,19 @@
-.navbar{
-    width: 100%;
-    background-color: aqua;
-    position: fixed;
-    z-index: 5;
-    padding: 10px;
+@import "../../styles/colors.scss";
+
+.navbar {
+  width: 100%;
+  background-color: $color-hover;
+  position: fixed;
+  z-index: 5;
+  padding: 10px;
+
+  &_message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_button {
+    border-left: 2px solid $color-sidebar-shadow;
+  }
 }
