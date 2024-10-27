@@ -9,27 +9,27 @@ interface SidebarProps {
   updatedInputValue: (updatedVal: string) => void;
   inputValue: string;
   nodesPanel: boolean;
+  toggleNodesPanel: () => void;
 }
 
+// This componenet controls what needs to be displayed 
+// when a Node is selected and when it isn't
 const Sidebar = (props: SidebarProps) => {
-  const [nodesPanelFlag, setNodesPanelFlag] = useState<boolean>(false);
-
-  const nodesPanel = props.nodesPanel || nodesPanelFlag;
-
   return (
     <div className={styles.sidebar}>
       <h2 className={styles.title}>
-        {nodesPanel? (
+        {props.nodesPanel ? (
           ""
         ) : (
-          <FontAwesomeIcon icon={faCircleLeft} onClick={()=>{
-            setNodesPanelFlag(!nodesPanelFlag)
-          }}/>
+          <FontAwesomeIcon
+            icon={faCircleLeft}
+            onClick={props.toggleNodesPanel} // Toggle nodes panel on click
+          />
         )}
-        {nodesPanel ? "NodesPanel" : "Settings Panel"}
+        {props.nodesPanel ? "Nodes Panel" : "Settings Panel"}
       </h2>
       <ul className={styles.menu}>
-        {nodesPanel ? (
+        {props.nodesPanel ? (
           <NodesPanel />
         ) : (
           <Input

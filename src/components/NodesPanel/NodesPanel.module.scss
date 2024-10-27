@@ -1,0 +1,36 @@
+@import '../../styles/colors.scss';
+
+.nodesPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: $color-background;
+  border-radius: 8px;
+  box-shadow: $shadow-light;
+  width: 100%;
+}
+
+.draggableNode {
+    display: flex;
+    flex-direction: column;
+  width: 120px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  color: $color-primary;
+  border-radius: 6px;
+  cursor: grab;
+  box-shadow: $shadow-medium;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    cursor: grabbing;
+    transform: translateY(1px);
+    box-shadow: $shadow-active;
+  }
+}

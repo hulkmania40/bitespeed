@@ -7,6 +7,7 @@ import ReactFlow, {
   useEdgesState,
   addEdge,
   Node,
+  Edge,
 } from "reactflow";
 
 import "reactflow/dist/style.css";
@@ -17,18 +18,23 @@ const initialNodes = [
   { id: "2", position: { x: 0, y: 200 }, data: { label: "Second" } },
 ];
 
-const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
+const initialEdges = [{ id: "reactflow__edge-1-2", source: "1", target: "2" }];
 
 interface NodesProps {
   selectedNode: (id: string, label: string) => void;
   updatedNode: SelectedNodeInterface | undefined;
+  onEdgesChange: (edges: Edge[]) => void;
+  currentNodes: (allNodes: Node[]) => void;
 }
 
 const Nodes = (props: NodesProps) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const updateNodeLabel = (nodes: Node[], updatedNode: SelectedNodeInterface) => {
+  const updateNodeLabel = (
+    nodes: Node[],
+    updatedNode: SelectedNodeInterface
+  ) => {
     return nodes.map((node) => {
       if (node.id === updatedNode.id) {
         return { ...node, data: { ...node.data, label: updatedNode.label } };
@@ -38,13 +44,16 @@ const Nodes = (props: NodesProps) => {
   };
 
   useEffect(() => {
+    props.onEdgesChange(edges); // Update edges in App whenever edges change
+    props.currentNodes(nodes);
+  }, [edges, nodes]);
 
-    if(props.updatedNode){
+  useEffect(() => {
+    if (props.updatedNode) {
       const updatedNodes = updateNodeLabel(nodes, props.updatedNode);
       setNodes(updatedNodes);
     }
-  }, [props.updatedNode])
-  
+  }, [props.updatedNode]);
 
   const onConnect = useCallback(
     (params: any) => setEdges((eds) => addEdge(params, eds)),
@@ -53,9 +62,39 @@ const Nodes = (props: NodesProps) => {
 
   const onNodeClick = useCallback(
     (_: React.MouseEvent, node: Node) => {
-      props.selectedNode(node.id, node.data.label)
+      props.selectedNode(node.id, node.data.label);
     },
-    [setNodes]
+    [props]
+  );
+
+  const onDragOver = (event: React.DragEvent) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  };
+
+  const onDrop = useCallback(
+    (event: React.DragEvent) => {
+      event.preventDefault();
+
+      const reactFlowBounds = event.currentTarget.getBoundingClientRect();
+      const type = event.dataTransfer.getData("application/reactflow");
+      if (!type) return;
+
+      const position = {
+        x: event.clientX - reactFlowBounds.left,
+        y: event.clientY - reactFlowBounds.top,
+      };
+
+      const newNode: Node = {
+        id: `${nodes.length + 1}`,
+        position,
+        data: { label: `New Message` },
+        type: "default",
+      };
+
+      setNodes((nds) => nds.concat(newNode));
+    },
+    [nodes, setNodes]
   );
 
   return (
@@ -66,6 +105,8 @@ const Nodes = (props: NodesProps) => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       onNodeClick={onNodeClick}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
     >
       <MiniMap position="bottom-left" />
       <Controls position="bottom-right" />
